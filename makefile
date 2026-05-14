@@ -1,12 +1,13 @@
 CC = gcc
 CFLAGS = -Wall
 TARGET = calc
+LIBS = -lm
 OBJS = calc.o calc_defs.o
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LIBS)
 
 calc.o: calc.c calc_defs.h
 	$(CC) $(CFLAGS) -c calc.c -o calc.o
