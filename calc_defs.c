@@ -6,7 +6,7 @@ double calc (char *a_str, char *operat, char *b_str){
     if(strcmp("+", operat) == 0) return a + b;
     if(strcmp("-", operat) == 0) return a - b;
     if(strcmp("*", operat) == 0) return a * b;
-    if(strcmp("/", operat) == 0) return a / b;
+    if(strcmp("/", operat) == 0 || strcmp(":", operat) == 0) return a / b;
     if(strcmp("%", operat) == 0) return fmod(a, b);
     if(strcmp("pow", operat) == 0 || strcmp("^", operat) == 0) return pow(a, b);
     else printf("Wrong operation %s. Try again\n", operat);
@@ -44,4 +44,12 @@ void display_history(char **history, int history_count){
         printf("%s\n", history[i]);
     }
     printf("_________________\nend history\n\n");
+}
+
+int check_answer(double result, double answer){
+    return fabs(result - answer) < EPSILON;
+}
+
+void double_to_point_char(double a, char *buffer, size_t size){
+    snprintf(buffer, size, "%.4g", a);
 }
